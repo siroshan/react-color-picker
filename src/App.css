@@ -1,38 +1,83 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+}
+.App-header {
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #F24A72;
 }
 
-.App-link {
-  color: #61dafb;
+.round-btn {
+  display: block;
+  border-radius: 50%;
+  border-width: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.color-picker-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 70vw;
+  margin: 100px auto;
+}
+
+.color-round-wrap {
+  position: relative;
+}
+
+.color-round-wrap .color-round {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.remove-btn {
+  position: absolute;
+  right: 0;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border-width: 0;
+  background-color: transparent;
+}
+
+.remove-btn :hover {
+  cursor: pointer;
+}
+
+.remove-btn svg {
+  transition: all 0.3s ease-in-out;
+}
+
+.remove-btn svg:hover {
+  fill: #d82148;
+}
+
+.add-btn {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  /* border: 2px solid #b4b4b4; */
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+  padding: 0;
+}
+
+.add-btn-active {
+  transform: rotate(45deg);
+}
+
+.add-btn svg:hover {
+  fill: #035397;
+  cursor: pointer;
 }
