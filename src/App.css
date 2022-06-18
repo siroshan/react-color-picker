@@ -18,7 +18,7 @@
   border-width: 0;
 }
 
-.color-picker-wrap {
+.custom-color-picker-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,5 +79,28 @@
 
 .add-btn svg:hover {
   fill: #035397;
+  cursor: pointer;
+}
+
+.color-picker-wrap {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.color-picker-wrap .color-add-btn {
+  border: 0;
+  background-color: #1363DF;
+  width: 100%;
+  padding: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #DFF6FF;
+  transition: all 0.3s ease-in-out;
+}
+
+.color-picker-wrap .color-add-btn:hover {
+  background-color: #242F9B;
   cursor: pointer;
 }

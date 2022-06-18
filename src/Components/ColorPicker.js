@@ -3,19 +3,20 @@ import { ChromePicker } from 'react-color';
 import RemoveIcon from '../Icons/RemoveIcon';
 import AddIcon from '../Icons/AddIcon';
 
-const ColorPicker = ({selectedColors, setSelectedColors}) => {
+const ColorPicker = ({ selectedColors, setSelectedColors }) => {
   const [bgColor, setBgColor] = useState('#000');
   const [isShown, setIsShown] = useState(false);
   const addBtnRef = useRef();
-  const onChangeCompleteHandler = ({ hex }, event) => {
-    if (selectedColors.indexOf(hex) === -1) {
-      setSelectedColors((prev) => [...prev, hex]);
-    }
-  };
 
   const onChangeHandler = ({ hex }, event) => {
     setBgColor(hex);
   };
+
+  const onAddColorHandler = () => {
+    if (selectedColors.indexOf(bgColor) === -1) {
+      setSelectedColors((prev) => [...prev, bgColor]);
+    }
+  } 
 
   const onAddClickHandler = (e) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ const ColorPicker = ({selectedColors, setSelectedColors}) => {
         aria-label="remove color"
         onClick={() => onRemoveClickHandler(color)}
       >
-        <RemoveIcon size={24}/>
+        <RemoveIcon size={24} />
       </button>
 
       <div className="color-round" style={{ backgroundColor: color }}></div>
@@ -50,20 +51,26 @@ const ColorPicker = ({selectedColors, setSelectedColors}) => {
   );
 
   return (
-    <div className="color-picker-wrap">
+    <div className="custom-color-picker-wrap">
       {selectedColors.length > 0 &&
         selectedColors.map((color, i) => (
           <ColorRound key={color} color={color} />
         ))}
-      <button ref={addBtnRef} className="round-btn add-btn" onClick={onAddClickHandler}>
-        <AddIcon size={40}/>
+      <button
+        ref={addBtnRef}
+        className="round-btn add-btn"
+        onClick={onAddClickHandler}
+      >
+        <AddIcon size={40} />
       </button>
       {isShown && (
-        <ChromePicker
-          color={bgColor}
-          onChange={onChangeHandler}
-          onChangeComplete={onChangeCompleteHandler}
-        />
+        <div className='color-picker-wrap'>
+          <ChromePicker
+            color={bgColor}
+            onChange={onChangeHandler}
+          />
+          <button className="color-add-btn" onClick={onAddColorHandler}>Add Color</button>
+        </div>
       )}
     </div>
   );
